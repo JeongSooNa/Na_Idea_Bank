@@ -1,5 +1,13 @@
 # 2021.10 ~ 2021.12 까지 월별 전국 인구이동
 
+
+
+## IDEA   
+- SQL : excel file 을 이용해 database(MYSQL)로 데이터 정규화   
+- JAVA : 정규화 된 data를 java를 이용하여 자료분석 (SAS/R 사용할 수도)   
+- HTML : 분석 된 자료를 시각화, UI 구현   
+
+## Excel File
 ### COULUM
 - 행정구역
 - 총 전입
