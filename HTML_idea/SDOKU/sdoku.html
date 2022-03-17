@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .main{
+            width: 1000px;
+            height: 1000px;
+            background-color: skyblue;
+            margin: 100px auto;
+        }
+        .main-title{
+            background-color: bisque;
+        }
+        .main-sdoku{
+            width: 450px;
+            height: 450px;
+            margin: 50px auto;
+            background-color: black;
+            padding: 10px;
+            display: grid;
+            grid-gap: 3px;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .main-sdoku-item{
+            background-color: black;
+            display: grid;
+            grid-gap: 1px;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .main-sdoku-item-ans{
+            background-color: white;
+        }
+        .main-sdoku-item-ans input{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+        .main-sdoku-item-ans input::-webkit-inner-spin-button{
+            display: none;
+        }
+        .check-list{
+            display: flex;
+            justify-content: space-around;
+        }
+        button{
+            width: 200px;
+            height: 50px;
+            font-size: 20px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"></div>
+        <div class="main">
+            <div class="main-title">
+                <h1>SDOKU</h1>
+            </div>
+            <div class="main-sdoku">
+                <div class="main-sdoku-item">
+                    <div class="main-sdoku-item-ans">
+                        <input class="value00" type="number" min="1" max="9" value="7" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value01" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value02" type="number" min="1" max="9" value="2" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value03" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value04" type="number" min="1" max="9" value="8" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value05" type="number" min="1" max="9" value="5" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value06" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value07" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value08" type="number" min="1" max="9">
+                    </div>
+                </div>
+                <div class="main-sdoku-item">
+                    <div class="main-sdoku-item-ans">
+                        <input class="value10" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value11" type="number" min="1" max="9" value="4" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value12" type="number" min="1" max="9" value="8" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value13" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value14" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value15" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value16" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value17" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value18" type="number" min="1" max="9" value="2" readonly>
+                    </div>
+                </div>
+                <div class="main-sdoku-item">
+                    <div class="main-sdoku-item-ans">
+                        <input class="value20" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value21" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value22" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value23" type="number" min="1" max="9" value="7" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value24" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value25" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value26" type="number" min="1" max="9" value="6" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value27" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value28" type="number" min="1" max="9" value="3" readonly>
+                    </div>
+                </div>
+                <div class="main-sdoku-item">
+                    <div class="main-sdoku-item-ans">
+                        <input class="value30" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value31" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value32" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value33" type="number" min="1" max="9" value="1" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value34" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value35" type="number" min="1" max="9" value="8" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value36" type="number" min="1" max="9" value="9" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value37" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value38" type="number" min="1" max="9">
+                    </div>
+                </div>
+                <div class="main-sdoku-item">
+                    <div class="main-sdoku-item-ans">
+                        <input class="value40" type="number" min="1" max="9" value="6" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value41" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value42" type="number" min="1" max="9" value="1" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value43" type="number" min="1" max="9" value="2" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value44" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value45" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value46" type="number" min="1" max="9" value="7" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value47" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value48" type="number" min="1" max="9">
+                    </div>
+                </div>
+                <div class="main-sdoku-item">
+                    <div class="main-sdoku-item-ans">
+                        <input class="value50" type="number" min="1" max="9" value="4" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value51" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value52" type="number" min="1" max="9" value="2" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value53" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value54" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value55" type="number" min="1" max="9" value="7" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value56" type="number" min="1" max="9" value="8" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value57" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value58" type="number" min="1" max="9">
+                    </div>
+                </div>
+                <div class="main-sdoku-item">
+                    <div class="main-sdoku-item-ans">
+                        <input class="value60" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value61" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value62" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value63" type="number" min="1" max="9" value="8" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value64" type="number" min="1" max="9" value="3" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value65" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value66" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value67" type="number" min="1" max="9" value="9" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value68" type="number" min="1" max="9">
+                    </div>
+                </div>
+                <div class="main-sdoku-item">
+                    <div class="main-sdoku-item-ans">
+                        <input class="value70" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value71" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value72" type="number" min="1" max="9" value="3" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value73" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value74" type="number" min="1" max="9" value="9" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value75" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value76" type="number" min="1" max="9" value="4" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value77" type="number" min="1" max="9" value="2" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value78" type="number" min="1" max="9">
+                    </div>
+                </div>
+                <div class="main-sdoku-item">
+                    <div class="main-sdoku-item-ans">
+                        <input class="value80" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value81" type="number" min="1" max="9" value="4" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value82" type="number" min="1" max="9" value="1" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value83" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value84" type="number" min="1" max="9" value="7" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value85" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value86" type="number" min="1" max="9">
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value87" type="number" min="1" max="9" value="3" readonly>
+                    </div>
+                    <div class="main-sdoku-item-ans">
+                        <input class="value88" type="number" min="1" max="9">
+                    </div>
+                </div>
+            </div>
+            <div class="check-list">
+                <button onclick="inputNum()">입력값 배열에 입력</button>
+                <button onclick="isTrue()">안틀렸나 확인</button>
+                <button onclick="isAnswer()">정답 확인</button>
+                <button onclick="doClear()">초기화</button>
+            </div>
+        </div>
+        <div class="footer"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        var arr = new Array(9)
+        for(var i=0; i<9; i++) arr[i] = new Array(9)
+        var arr_row = new Array(9)
+        for(var i=0; i<9; i++) arr_row[i] = new Array(9)
+        var arr_col = new Array(9)
+        for(var i=0; i<9; i++) arr_col[i] = new Array(9)
+
+        for(var i=0; i<9; i++){
+                for(var j=0; j<9; j++){
+                    arr[i][j] = 0
+                }
+        }
+        // $('.value'+i+j).val() : 입력한 숫자
+        // inputNum : 입력한 값 배열에 입력하기
+        function inputNum(){
+            for(var i=0; i<9; i++){
+                for(var j=0; j<9; j++){
+                    arr[i][j] = $('.value'+i+j).val()
+                }
+            }
+            // row 배열입력
+            arr_row[0][0] = $('.value'+0+0).val()
+            arr_row[0][1] = $('.value'+0+1).val()
+            arr_row[0][2] = $('.value'+0+2).val()
+            arr_row[0][3] = $('.value'+1+0).val()
+            arr_row[0][4] = $('.value'+1+1).val()
+            arr_row[0][5] = $('.value'+1+2).val()
+            arr_row[0][6] = $('.value'+2+0).val()
+            arr_row[0][7] = $('.value'+2+1).val()
+            arr_row[0][8] = $('.value'+2+2).val()
+            arr_row[1][0] = $('.value'+0+3).val()
+            arr_row[1][1] = $('.value'+0+4).val()
+            arr_row[1][2] = $('.value'+0+5).val()
+            arr_row[1][3] = $('.value'+1+3).val()
+            arr_row[1][4] = $('.value'+1+4).val()
+            arr_row[1][5] = $('.value'+1+5).val()
+            arr_row[1][6] = $('.value'+2+3).val()
+            arr_row[1][7] = $('.value'+2+4).val()
+            arr_row[1][8] = $('.value'+2+5).val()
+            arr_row[2][0] = $('.value'+0+6).val()
+            arr_row[2][1] = $('.value'+0+7).val()
+            arr_row[2][2] = $('.value'+0+8).val()
+            arr_row[2][3] = $('.value'+1+6).val()
+            arr_row[2][4] = $('.value'+1+7).val()
+            arr_row[2][5] = $('.value'+1+8).val()
+            arr_row[2][6] = $('.value'+2+6).val()
+            arr_row[2][7] = $('.value'+2+7).val()
+            arr_row[2][8] = $('.value'+2+8).val()
+
+            arr_row[3][0] = $('.value'+3+0).val()
+            arr_row[3][1] = $('.value'+3+1).val()
+            arr_row[3][2] = $('.value'+3+2).val()
+            arr_row[3][3] = $('.value'+4+0).val()
+            arr_row[3][4] = $('.value'+4+1).val()
+            arr_row[3][5] = $('.value'+4+2).val()
+            arr_row[3][6] = $('.value'+5+0).val()
+            arr_row[3][7] = $('.value'+5+1).val()
+            arr_row[3][8] = $('.value'+5+2).val()
+            arr_row[4][0] = $('.value'+3+3).val()
+            arr_row[4][1] = $('.value'+3+4).val()
+            arr_row[4][2] = $('.value'+3+5).val()
+            arr_row[4][3] = $('.value'+4+3).val()
+            arr_row[4][4] = $('.value'+4+4).val()
+            arr_row[4][5] = $('.value'+4+5).val()
+            arr_row[4][6] = $('.value'+5+3).val()
+            arr_row[4][7] = $('.value'+5+4).val()
+            arr_row[4][8] = $('.value'+5+5).val()
+            arr_row[5][0] = $('.value'+3+6).val()
+            arr_row[5][1] = $('.value'+3+7).val()
+            arr_row[5][2] = $('.value'+3+8).val()
+            arr_row[5][3] = $('.value'+4+6).val()
+            arr_row[5][4] = $('.value'+4+7).val()
+            arr_row[5][5] = $('.value'+4+8).val()
+            arr_row[5][6] = $('.value'+5+6).val()
+            arr_row[5][7] = $('.value'+5+7).val()
+            arr_row[5][8] = $('.value'+5+8).val()
+
+            arr_row[6][0] = $('.value'+6+0).val()
+            arr_row[6][1] = $('.value'+6+1).val()
+            arr_row[6][2] = $('.value'+6+2).val()
+            arr_row[6][3] = $('.value'+7+0).val()
+            arr_row[6][4] = $('.value'+7+1).val()
+            arr_row[6][5] = $('.value'+7+2).val()
+            arr_row[6][6] = $('.value'+8+0).val()
+            arr_row[6][7] = $('.value'+8+1).val()
+            arr_row[6][8] = $('.value'+8+2).val()
+            arr_row[7][0] = $('.value'+6+3).val()
+            arr_row[7][1] = $('.value'+6+4).val()
+            arr_row[7][2] = $('.value'+6+5).val()
+            arr_row[7][3] = $('.value'+7+3).val()
+            arr_row[7][4] = $('.value'+7+4).val()
+            arr_row[7][5] = $('.value'+7+5).val()
+            arr_row[7][6] = $('.value'+8+3).val()
+            arr_row[7][7] = $('.value'+8+4).val()
+            arr_row[7][8] = $('.value'+8+5).val()
+            arr_row[8][0] = $('.value'+6+6).val()
+            arr_row[8][1] = $('.value'+6+7).val()
+            arr_row[8][2] = $('.value'+6+8).val()
+            arr_row[8][3] = $('.value'+7+6).val()
+            arr_row[8][4] = $('.value'+7+7).val()
+            arr_row[8][5] = $('.value'+7+8).val()
+            arr_row[8][6] = $('.value'+8+6).val()
+            arr_row[8][7] = $('.value'+8+7).val()
+            arr_row[8][8] = $('.value'+8+8).val()
+
+            // col 배열입력
+            arr_col[0][0] = $('.value'+0+0).val()
+            arr_col[0][1] = $('.value'+0+3).val()
+            arr_col[0][2] = $('.value'+0+6).val()
+            arr_col[0][3] = $('.value'+3+0).val()
+            arr_col[0][4] = $('.value'+3+3).val()
+            arr_col[0][5] = $('.value'+3+6).val()
+            arr_col[0][6] = $('.value'+6+0).val()
+            arr_col[0][7] = $('.value'+6+3).val()
+            arr_col[0][8] = $('.value'+6+6).val()
+            arr_col[1][0] = $('.value'+0+1).val()
+            arr_col[1][1] = $('.value'+0+4).val()
+            arr_col[1][2] = $('.value'+0+7).val()
+            arr_col[1][3] = $('.value'+3+1).val()
+            arr_col[1][4] = $('.value'+3+4).val()
+            arr_col[1][5] = $('.value'+3+7).val()
+            arr_col[1][6] = $('.value'+6+1).val()
+            arr_col[1][7] = $('.value'+6+4).val()
+            arr_col[1][8] = $('.value'+6+7).val()
+            arr_col[2][0] = $('.value'+0+2).val()
+            arr_col[2][1] = $('.value'+0+5).val()
+            arr_col[2][2] = $('.value'+0+8).val()
+            arr_col[2][3] = $('.value'+3+2).val()
+            arr_col[2][4] = $('.value'+3+5).val()
+            arr_col[2][5] = $('.value'+3+8).val()
+            arr_col[2][6] = $('.value'+6+2).val()
+            arr_col[2][7] = $('.value'+6+5).val()
+            arr_col[2][8] = $('.value'+6+8).val()
+
+            arr_col[3][0] = $('.value'+1+0).val()
+            arr_col[3][1] = $('.value'+1+3).val()
+            arr_col[3][2] = $('.value'+1+6).val()
+            arr_col[3][3] = $('.value'+4+0).val()
+            arr_col[3][4] = $('.value'+4+3).val()
+            arr_col[3][5] = $('.value'+4+6).val()
+            arr_col[3][6] = $('.value'+7+0).val()
+            arr_col[3][7] = $('.value'+7+3).val()
+            arr_col[3][8] = $('.value'+7+6).val()
+            arr_col[4][0] = $('.value'+1+1).val()
+            arr_col[4][1] = $('.value'+1+4).val()
+            arr_col[4][2] = $('.value'+1+7).val()
+            arr_col[4][3] = $('.value'+4+1).val()
+            arr_col[4][4] = $('.value'+4+4).val()
+            arr_col[4][5] = $('.value'+4+7).val()
+            arr_col[4][6] = $('.value'+7+1).val()
+            arr_col[4][7] = $('.value'+7+4).val()
+            arr_col[4][8] = $('.value'+7+7).val()
+            arr_col[5][0] = $('.value'+1+2).val()
+            arr_col[5][1] = $('.value'+1+5).val()
+            arr_col[5][2] = $('.value'+1+8).val()
+            arr_col[5][3] = $('.value'+4+2).val()
+            arr_col[5][4] = $('.value'+4+5).val()
+            arr_col[5][5] = $('.value'+4+8).val()
+            arr_col[5][6] = $('.value'+7+2).val()
+            arr_col[5][7] = $('.value'+7+5).val()
+            arr_col[5][8] = $('.value'+7+8).val()
+
+            arr_col[6][0] = $('.value'+2+0).val()
+            arr_col[6][1] = $('.value'+2+3).val()
+            arr_col[6][2] = $('.value'+2+6).val()
+            arr_col[6][3] = $('.value'+5+0).val()
+            arr_col[6][4] = $('.value'+5+3).val()
+            arr_col[6][5] = $('.value'+5+6).val()
+            arr_col[6][6] = $('.value'+8+0).val()
+            arr_col[6][7] = $('.value'+8+3).val()
+            arr_col[6][8] = $('.value'+8+6).val()
+            arr_col[7][0] = $('.value'+2+1).val()
+            arr_col[7][1] = $('.value'+2+4).val()
+            arr_col[7][2] = $('.value'+2+7).val()
+            arr_col[7][3] = $('.value'+5+1).val()
+            arr_col[7][4] = $('.value'+5+4).val()
+            arr_col[7][5] = $('.value'+5+7).val()
+            arr_col[7][6] = $('.value'+8+1).val()
+            arr_col[7][7] = $('.value'+8+4).val()
+            arr_col[7][8] = $('.value'+8+7).val()
+            arr_col[8][0] = $('.value'+2+2).val()
+            arr_col[8][1] = $('.value'+2+5).val()
+            arr_col[8][2] = $('.value'+2+8).val()
+            arr_col[8][3] = $('.value'+5+2).val()
+            arr_col[8][4] = $('.value'+5+5).val()
+            arr_col[8][5] = $('.value'+5+8).val()
+            arr_col[8][6] = $('.value'+8+2).val()
+            arr_col[8][7] = $('.value'+8+5).val()
+            arr_col[8][8] = $('.value'+8+8).val()
+
+            
+            alert(arr)
+        }
+        // isTrue : 안틀렸나 확인
+        function isTrue(){
+            var count = 0
+            for(var i=0; i<9; i++){
+                for(var j=0; j<9; j++){
+                    for(var k=0; k<9; k++){
+                        if(arr[i][j]==0) continue
+                        if(j==k) continue
+                        if(arr[i][j]==arr[i][k]) count++;
+                        if(arr[i][j]==arr_row[i][k]) count++;
+                        if(arr[i][j]==arr_col[i][k]) count++;
+                        if(count>0) break
+                    }
+                }
+            }
+            
+            /*
+                아직 푸는중! 지금 arr들에 null값이 들어가 비교가 힘들다
+                해결해야한다.
+                기본 틀 및 배열에 값 입력은 완료.
+            */
+
+            if(count>0) alert("틀렸습니다.")
+            else alert("맞았습니다. 계속푸세요.")
+        }
+
+        // isAnswer : 정답 확인
+        function isAnswer(){
+            
+        }
+
+
+        // 입력값 확인해보기
+        function inNumber(){
+            console.log($('.value').val())
+            alert($('.value'+'1'+'1').val())
+            alert($('.value'+'1'+'2').val())
+        }
+        // 정답 확인
+
+        function ansFalse(){
+
+        }
+        // clear
+        function doClear() {
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>
